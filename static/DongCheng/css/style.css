@@ -1,0 +1,151 @@
+body {
+	background-image: url(../images/body_bg.gif);
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 15px;
+	font-family:  “Microsoft YaHei” ! important;
+
+}
+table,table tr th, table tr td { border:1px solid #373737;border-collapse:collapse;text-align: center;vertical-align: middle; }
+.content{
+	width: 1920px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.bg{
+	width: 1920px;
+	height: 1080px;
+	margin: 0;
+	background-image: url(../images/p3.jpg);
+}
+.top{
+	width: 1920px;
+	margin:0 auto;
+	/*background-color: #fff;*/
+	/*background-image: url(images/top_bg_left1.jpg);
+
+	background-repeat: no-repeat;
+	background-size: cover;*/
+	height: 200px;
+	vertical-align: middle
+
+}
+/*.tilte{
+	margin-top:auto;
+	margin-bottom:auto;
+	position: relative;
+}*/
+.top .logo{
+
+
+	width:92px;
+	height:112px;
+	/*background: url(images/logo.png);*/
+	margin-top: 40px;
+	margin-left: 330px;
+}
+.tilte{
+	display: inline-block;
+	position: relative;
+	font-size: 62px;
+	font-weight: bolder;
+	top:-35px;
+	color: #fff;
+	left: 20px;
+	font-family: SimHei;
+	/*-webkit-text-stroke: 2px yellow;*/
+}
+.line{
+	background-color: #2471b9;
+	height: 5px;
+
+}
+.texttilte{
+	display: inline-block;
+	position: relative;
+	height: 70px;
+	font-size: 45px;
+	font-weight: bolder;
+	/*top:-35px;*/
+	color: #fff;
+	left: 300px;
+	font-family: SimHei;
+}
+.text{
+	display: block;
+	height: 60px;
+	position: relative;
+	font-size: 38px;
+	font-weight: bolder;
+	/*top:-35px;*/
+	color: #fbf539;
+	left: 600px;
+	font-family: SimHei;
+}
+#main{
+	width: 1920px;
+	margin-left:auto;
+	margin-right:auto;
+	/*background-color: #fff;*/
+
+}
+#year{
+	display: inline-block;
+	height: 40px;
+	width: 100px;
+	padding-left: 50px;
+	line-height: 40px;
+	float: left
+}
+#unit{
+	display: inline-block;
+	float: right;
+	width: 100px;
+	ritht:0px;
+	height: 40px;
+	padding-right: 50px;
+	line-height: 40px;
+}
+#sheet{
+	width: 960px;
+	text-align: center;
+}
+/*td{
+	width:100px;/*这里需要自己调整，根据自己的需求调整宽度
+height:50px;/*这里需要自己调整，根据自己的需求调整高度
+position: relative;
+}*/
+td{
+	line-height: 35px;
+
+}
+#td1:before{
+content: "";
+position: absolute;
+width: 1px;
+height:170px;/*这里需要自己调整，根据td的宽度和高度*/
+top:0;
+left:0;
+background-color: black;
+display: block;
+transform: rotate(-64.5deg);/*这里需要自己调整，根据线的位置*/
+transform-origin: top;
+}
+.interval{
+	height: 50px;
+}
+.chart{
+	text-align: center;
+	height: 600px;
+}
+.bottom{
+	/*background-color: #fff;*/
+}
+/*.bottom_line{
+	background-color: #828282;
+	height: 2px;
+
+}*/
+.bottom_font{
+	text-align: center;
+}

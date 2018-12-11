@@ -1,0 +1,54 @@
+﻿{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="300">
+<title>办事业务统计</title>
+<link rel="stylesheet" type="text/css" href="{% static 'DongCheng/css/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'DongCheng/css/WdatePicker.css' %}"/>
+    {% for jsfile_name in pie_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+
+    {% for jsfile_name in bar_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+
+    {% for jsfile_name in rz_bar_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+</head>
+<body>
+	<div class="bg">
+		<div class="content">
+
+			<div class="top">
+				<img class="logo" src="{% static 'DongCheng/images/logo.png' %}">
+				<span class="tilte">东城街道行政办事大功能区域办理情况</span>
+			</div>
+            <div>
+                <span style="font-size: small;"><a href="{% url 'DongCheng:bumen_data_show' %}"><button>查看图表</button></a></span>
+            </div>
+			<div class="line"></div>
+		</div>
+		<div id="main">
+			<div class="interval"></div>
+			<div>
+				<span class="texttilte">总体办理情况</span>
+				<span class="text">今日办理量：{{ count_today }}    本周办理量：{{ count_7 }}</span>
+				<span class="text">本月办理量：{{ count_31 }}   本年办理量：{{ count_365 }}</span>
+{#				<span class="text">平均等候时长（今日）：XXX</span>#}
+{#				<span class="text">平均办事时长（今日）：XXX</span>#}
+			</div>
+			<div class="interval"></div>
+			<div class="interval"></div>
+			<div>
+				<span class="texttilte">综合服务中心及各专厅今日办理情况</span>
+				<span class="text">综合服务中心：{{ zx_count_today }}    &nbsp;&nbsp;人资大厅：{{ rz_count_today }} </span>
+				<span class="text">工商大厅：{{ gs_count_today }}    &nbsp;&nbsp;{% if ga_count_today != 0%}公安大厅：{{ ga_count_today }}{% endif %} </span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

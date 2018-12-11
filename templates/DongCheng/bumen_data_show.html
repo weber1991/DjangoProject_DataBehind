@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>办事业务统计</title>
+<link rel="stylesheet" type="text/css" href="{% static 'DongCheng/css/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'DongCheng/css/WdatePicker.css' %}"/>
+    {% for jsfile_name in pie_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+
+    {% for jsfile_name in bar_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+
+    {% for jsfile_name in line_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+<style>
+.show{
+    text-align: left;
+    margin-left: 70px;
+}
+</style>
+</head>
+
+<body style="text-align: center;">
+	<div class="content">
+        <div class="top">
+			<img class="logo" src="{% static 'DongCheng/images/logo.png' %}">
+			<span class="tilte">东城街道行政办事大功能区域办理情况</span>
+		</div>
+            <div class="interval"></div>
+        <div style="text-align: left;"><span style="font-size: small;"><a href="{% url 'DongCheng:index_dc' %}"><button>首页</button></a></span></div>
+        <div class="line"></div>
+            <div class="interval"></div>
+            <form action="{% url 'DongCheng:bumen_data_show' %}" method="post">{% csrf_token %}
+    <p class="" style="text-align: center;">
+    	<label>*办事点：</label>
+       <select name="bumen" required="required">
+            <option value="rz" {% if bumen == 'rz' %} selected="selected"{% endif %}>人力资源局</option>
+            <option value="zx" {% if bumen == 'zx' %} selected="selected"{% endif %}>政务服务中心</option>
+            <option value="gs" {% if bumen == 'gs' %} selected="selected"{% endif %}>工商分局</option>
+            <option value="ga" {% if bumen == 'ga' %} selected="selected"{% endif %}>公安分局</option>
+            <option value="all" {% if bumen == 'all' %} selected="selected"{% endif %}>全部</option>
+        </select>
+    	<label>*开始时间：</label>
+               <input type="text"  name="start" placeholder="开始时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value=""/>
+            	<label>*结束时间：</label>
+               <input type="text"  name="end" placeholder="结束时间" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value=""/>
+            <button><input type="submit" value="查询"/></button>
+    </p>
+            </form>
+
+			<div class="chart" >{{ bar_demo|safe }}</div>
+			<div class="interval"></div>
+    {% if pie_demo %}
+            <div class="chart" >{{ pie_demo|safe }}</div>
+            <div class="interval"></div>
+        {% endif %}
+            <div class="chart">{{ line_demo|safe }}</div>
+            <div class="interval"></div>
+	</div>
+{#    <div class="bottom">#}
+{#			<div class="bottom_line"></div>#}
+{#			<div class="interval"></div>#}
+{#			<div class="bottom_font"><span>版权所有：东莞政务服务中心 联系电话：88888888 </span>#}
+{#			</div>#}
+{#			<div class="interval"></div>#}
+{#    </div>#}
+    <script type="text/javascript" src="{% static 'DongCheng/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'DongCheng/js/common.js' %}"></script>
+    <script type="text/javascript" src="{% static 'DongCheng/js/WdatePicker.js' %}"></script>
+</body>
+</html>

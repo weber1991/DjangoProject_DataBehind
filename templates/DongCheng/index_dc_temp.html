@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>办事业务统计</title>
+<link rel="stylesheet" type="text/css" href="{% static 'DongCheng/css/style.css' %}"/>
+    {% for jsfile_name in pie_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+
+    {% for jsfile_name in bar_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+
+    {% for jsfile_name in k_script_list %}
+        <script src="{{ host }}/{{ jsfile_name }}.js"></script>
+    {% endfor %}
+</head>
+
+<body>
+	<div class="content">
+
+		<div class="top">
+			<img class="logo" src="{% static 'DongCheng/img/logo.jpg' %}">
+			<span class="tilte">东城综合服务中心业务办理情况统计</span>
+		</div>
+		<div class="line"></div>
+	</div>
+	<div id="main">
+		<div id="year"><span>年份：2018年</span>
+		</div>
+		<div id="unit">单位：人次</div>
+		<div style="clear: both"></div>
+		<div id="sheet">
+			<table width="800px" cellpadding="2" cellspacing="0" align="center" >
+				<tr align="center">
+					<td width="150px" id="td1" height="40px" style="position: relative" ><div align="right" style="padding-right: 20px">月份</div><div align="left" style="padding-left: 20px">区域</div></td>
+					<td>1月</td>
+					<td>2月</td>
+					<td>3月</td>
+					<td>4月</td>
+					<td>5月</td>
+					<td>6月</td>
+				</tr>
+				<tr align="center">
+					<td>中心办事服务区</td>
+					<td>876</td>
+					<td>567</td>
+					<td>678</td>
+					<td>638</td>
+					<td>789</td>
+					<td>688</td>
+				</tr>
+				<tr align="center">
+					<td>人资办事服务分区</td>
+					<td>1112</td>
+					<td>1341</td>
+					<td>1222</td>
+					<td>985</td>
+					<td>990</td>
+					<td>1234</td>
+				</tr>
+				<tr align="center">
+					<td>公安办事服务分区</td>
+					<td>688</td>
+					<td>733</td>
+					<td>885</td>
+					<td>679</td>
+					<td>594</td>
+					<td>498</td>
+				</tr>
+				<tr align="center">
+					<td>工商办事服务分区</td>
+					<td>234</td>
+					<td>213</td>
+					<td>332</td>
+					<td>433</td>
+					<td>565</td>
+					<td>355</td>
+				</tr>
+			</table>
+			<div class="interval"></div>
+			<div class="chart" style="">{{ bar_demo|safe }}</div>
+			<div class="interval"></div>
+            <div class="chart">{{ pie_demo|safe }}</div>
+            <div class="interval"></div>
+            <div class="chart">{{ k_demo|safe }}</div>
+            <div class="interval"></div>
+		</div>
+	</div>
+{#    <div class="bottom">#}
+{#			<div class="bottom_line"></div>#}
+{#			<div class="interval"></div>#}
+{#			<div class="bottom_font"><span>版权所有：东莞政务服务中心 联系电话：88888888 </span>#}
+{#			</div>#}
+{#			<div class="interval"></div>#}
+{#    </div>#}
+
+</body>
+</html>
