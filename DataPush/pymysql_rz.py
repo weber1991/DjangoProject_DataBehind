@@ -278,4 +278,9 @@ while True:
     else:
         print("rz更新窗口信息失败。")
     insert_rz_queuehist(None,None)
+
+    # 服务器使用延迟
     time.sleep(5*60)
+
+    # 单机使用延迟
+    #time.sleep(100)

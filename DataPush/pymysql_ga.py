@@ -270,4 +270,9 @@ while True:
         print("更新公安窗口失败")
         
     insert_ga_queuehist(None)
+
+    # 服务器使用延迟
     time.sleep(60*5)
+
+    # 个人使用延迟
+    #time.sleep(100)

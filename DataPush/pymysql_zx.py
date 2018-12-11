@@ -215,7 +215,14 @@ def delete_zx_ck():
 
 
 while True:
+    # 服务器部分
     delete_zx_ck()
     insert_zx_ck()
     insert_zx_qupiaotongji(None)
     time.sleep(5*60)
+
+    # 单机测试部分
+    # delete_zx_ck()
+    # insert_zx_ck()
+    # insert_zx_qupiaotongji(None)
+    # time.sleep(100)

@@ -257,6 +257,8 @@ while True:
     insert_base_data('rz_count_365', rz_count_365["count"], day_365.strftime("%Y-%m-%d"), day_365.strftime("%Y-%m-%d"))
 
 
-
+    # 服务器使用延迟
     time.sleep(10*60)
 
+    #个人使用延迟
+    #time.sleep(100)
