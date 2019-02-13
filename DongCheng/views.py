@@ -6,15 +6,18 @@ from django.template import loader
 from pyecharts import Line3D, Bar, Pie, Kline, Line
 from DongCheng.models import *
 import datetime, time
+from datetime import timedelta
 
 
 REMOTE_HOST = "https://pyecharts.github.io/assets/js"
 
 
-def get_year(year):
-    import datetime  
-    year_date = datetime.datetime(year=int(year), month=1, day=1, hour=0, second=0)
-    return year_date
+def get_date(year, month = 1, day = 1):
+    try:
+        date = datetime.datetime(int(year),int(month),int(day),0,0)
+        return date
+    except:
+        return False
 
 # 官方demo
 def index_dc(req):
@@ -36,29 +39,17 @@ def index_dc(req):
     # print(zx_piaohaotongji.objects.filter(creationtime__gte=day_365).count())
     # print("************",time.time())
 
-    # zx_count_7 = len(zx_piaohaotongji.objects.filter(creationtime__gte=day_7))
-    # rz_count_7 = len(rz_queuehist.objects.filter(endtime__gte=day_7))
-    # gs_count_7 = len(gs_queuehist.objects.filter(endtime__gte=day_7))
-    # ga_count_7 = len(ga_queuehist.objects.filter(ssd__gte=day_7))
-    #
-    # zx_count_31 = len(zx_piaohaotongji.objects.filter(creationtime__gte=day_31))
-    # rz_count_31 = len(rz_queuehist.objects.filter(endtime__gte=day_31))
-    # gs_count_31 = len(gs_queuehist.objects.filter(endtime__gte=day_31))
-    # ga_count_31 = len(ga_queuehist.objects.filter(ssd__gte=day_31))
-    #
-    # zx_count_365 = len(zx_piaohaotongji.objects.filter(creationtime__gte=day_365))
-    # rz_count_365 = len(rz_queuehist.objects.filter(endtime__gte=day_365))
-    # gs_count_365 = len(gs_queuehist.objects.filter(endtime__gte=day_365))
-    # ga_count_365 = len(ga_queuehist.objects.filter(ssd__gte=day_365))
-    zx_count_7 = base_data.objects.get(what='zx_count_7').count
-    rz_count_7 = base_data.objects.get(what='rz_count_7').count
-    gs_count_7 = base_data.objects.get(what='gs_count_7').count
-    ga_count_7 = base_data.objects.get(what='ga_count_7').count
+    # 周时间不计算七天，而是计算每周第一天和最后一天
+    # zx_count_7 = base_data.objects.get(what='zx_count_7').count
+    # rz_count_7 = base_data.objects.get(what='rz_count_7').count
+    # gs_count_7 = base_data.objects.get(what='gs_count_7').count
+    # ga_count_7 = base_data.objects.get(what='ga_count_7').count
 
-    zx_count_31 = base_data.objects.get(what='zx_count_31').count
-    rz_count_31 = base_data.objects.get(what='rz_count_31').count
-    gs_count_31 = base_data.objects.get(what='gs_count_31').count
-    ga_count_31 = base_data.objects.get(what='ga_count_31').count
+    # 月时间不计算31天，而是计算每个月开始
+    # zx_count_31 = base_data.objects.get(what='zx_count_31').count
+    # rz_count_31 = base_data.objects.get(what='rz_count_31').count
+    # gs_count_31 = base_data.objects.get(what='gs_count_31').count
+    # ga_count_31 = base_data.objects.get(what='ga_count_31').count
 
     # 年份不用365天，而是使用大于今年1月1日
     # zx_count_365 = base_data.objects.get(what='zx_count_365').count
@@ -67,7 +58,21 @@ def index_dc(req):
     # ga_count_365 = base_data.objects.get(what='ga_count_365').count
 
     # 构造今年1月1号
-    now_year = get_year(datetime.datetime.now.year)
+    now = datetime.datetime.now()
+    now_year = get_date(now.year)
+    now_month = get_date(now_year,now_month)
+    now_week_start_date = now - timedelta(days=now.weekday())
+    now_week_start = get_date(now.year, now.month, now_week_start_date.day)
+
+    zx_count_7 = zx_piaohaotongji.objects.filter(creationtime__gte=now_week_start).count()
+    rz_count_7 = rz_queuehist.objects.filter(endtime__gte=now_week_start).count()
+    gs_count_7 = gs_queuehist.objects.filter(endtime__gte=now_week_start).count()
+    ga_count_7 = ga_queuehist.objects.filter(ssd__gte=now_week_start).count()
+    
+    zx_count_31 = zx_piaohaotongji.objects.filter(creationtime__gte=now_month).count()
+    rz_count_31 = rz_queuehist.objects.filter(endtime__gte=now_month).count()
+    gs_count_31 = gs_queuehist.objects.filter(endtime__gte=now_month).count()
+    ga_count_31 = ga_queuehist.objects.filter(ssd__gte=now_month).count()
 
     zx_count_365 = zx_piaohaotongji.objects.filter(creationtime__gte=now_year).count()
     rz_count_365 = rz_queuehist.objects.filter(endtime__gte=now_year).count()
