@@ -46,7 +46,7 @@
 			<div>
 				<span class="texttilte">综合服务中心及各专厅今日办理情况</span>
 				<span class="text">综合服务中心：{{ zx_count_today }}    &nbsp;&nbsp;人资大厅：{{ rz_count_today }} </span>
-				<span class="text">工商大厅：{{ gs_count_today }}    &nbsp;&nbsp;{% if ga_count_today != 0%}公安大厅：{{ ga_count_today }}{% endif %} </span>
+				<span class="text">{% if gs_count_today != 0%}工商大厅：{{ gs_count_today }} {% endif %}   &nbsp;&nbsp;{% if ga_count_today != 0%}公安大厅：{{ ga_count_today }}{% endif %} </span>
 			</div>
 		</div>
 	</div>

@@ -60,7 +60,7 @@ def index_dc(req):
     # 构造今年1月1号
     now = datetime.datetime.now()
     now_year = get_date(now.year)
-    now_month = get_date(now_year,now_month)
+    now_month = get_date(now.year,now.month)
     now_week_start_date = now - timedelta(days=now.weekday())
     now_week_start = get_date(now.year, now.month, now_week_start_date.day)
 
