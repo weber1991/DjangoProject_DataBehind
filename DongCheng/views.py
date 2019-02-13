@@ -11,6 +11,11 @@ import datetime, time
 REMOTE_HOST = "https://pyecharts.github.io/assets/js"
 
 
+def get_year(year):
+    import datetime  
+    year_date = datetime.datetime(year=int(year), month=1, day=1, hour=0, second=0)
+    return year_date
+
 # 官方demo
 def index_dc(req):
     print(time.time())
@@ -55,6 +60,7 @@ def index_dc(req):
     gs_count_31 = base_data.objects.get(what='gs_count_31').count
     ga_count_31 = base_data.objects.get(what='ga_count_31').count
 
+    # 年份不用365天，而是使用大于今年1月1日
     zx_count_365 = base_data.objects.get(what='zx_count_365').count
     rz_count_365 = base_data.objects.get(what='rz_count_365').count
     gs_count_365 = base_data.objects.get(what='gs_count_365').count
