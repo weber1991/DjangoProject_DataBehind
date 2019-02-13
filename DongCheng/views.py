@@ -61,10 +61,18 @@ def index_dc(req):
     ga_count_31 = base_data.objects.get(what='ga_count_31').count
 
     # 年份不用365天，而是使用大于今年1月1日
-    zx_count_365 = base_data.objects.get(what='zx_count_365').count
-    rz_count_365 = base_data.objects.get(what='rz_count_365').count
-    gs_count_365 = base_data.objects.get(what='gs_count_365').count
-    ga_count_365 = base_data.objects.get(what='ga_count_365').count
+    # zx_count_365 = base_data.objects.get(what='zx_count_365').count
+    # rz_count_365 = base_data.objects.get(what='rz_count_365').count
+    # gs_count_365 = base_data.objects.get(what='gs_count_365').count
+    # ga_count_365 = base_data.objects.get(what='ga_count_365').count
+
+    # 构造今年1月1号
+    now_year = get_year(datetime.datetime.now.year)
+
+    zx_count_365 = zx_piaohaotongji.objects.filter(creationtime__gte=now_year).count()
+    rz_count_365 = rz_queuehist.objects.filter(endtime__gte=now_year).count()
+    gs_count_365 = gs_queuehist.objects.filter(endtime__gte=now_year).count()
+    ga_count_365 = ga_queuehist.objects.filter(ssd__gte=now_year).count()
 
     print(time.time())
     context = dict(
