@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'databehind',
-        'USER':'root',
-        'PASSWORD':'weber',
+        'USER':'databehind',
+        'PASSWORD':'Dc2019!@#',
         'HOST':'localhost',
         'PORT':'3306',
     }
