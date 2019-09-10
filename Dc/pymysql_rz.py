@@ -150,7 +150,7 @@ def insert_rz_service():
         return 'error'
 
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306, charset='utf8')
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306, charset='utf8')
         cur = db.cursor()
    # sql_update = "update u set username = '%s' where id = %d"
     except:
@@ -176,7 +176,7 @@ def insert_rz_counter():
     if temp['state'] == '0':
         return 'error'
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306, charset='utf8')
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306, charset='utf8')
         cur = db.cursor()
     except:
         return 'error'
@@ -204,7 +204,7 @@ def insert_rz_queuehist(start = None, end = None):
         return 'error'
 
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306, charset='utf8')
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306, charset='utf8')
         cur = db.cursor()
     # sql_update = "update u set username = '%s' where id = %d"
     except:
@@ -229,7 +229,7 @@ def insert_rz_queuehist(start = None, end = None):
 
 def delete_rz_service():
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306,
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306,
                              charset='utf8')
         cur = db.cursor()
     except:
@@ -248,7 +248,7 @@ def delete_rz_service():
 
 def delete_rz_counter():
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306, charset='utf8')
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306, charset='utf8')
         cur = db.cursor()
     except:
         return 'error'

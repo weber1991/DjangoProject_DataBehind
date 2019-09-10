@@ -168,7 +168,7 @@ def get_rz_count(starttime=None, endtime=None):
 def insert_base_data(what='', count=0, start='', end=''):
     now = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306,
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306,
                              charset='utf8')
         cur = db.cursor()
     except:
@@ -191,7 +191,7 @@ def insert_base_data(what='', count=0, start='', end=''):
 
 def clean_base_data():
     try:
-        db = pymysql.connect(host='localhost', user='root', password=PASSWORD, db='databehind', port=3306,
+        db = pymysql.connect(host='localhost', user=USER, password=PASSWORD, db='databehind', port=3306,
                              charset='utf8')
         cur = db.cursor()
     except:
